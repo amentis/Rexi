@@ -1,6 +1,6 @@
 __author__ = 'amentis'
 __all__ = ['RxGUIObject', 'RxDynamic', 'Window', 'Screen', 'TextView', 'TextEdit', 'Font', 'Color', 'Button',
-           'KeyEvent', 'Border']
+           'Event', 'KeyEvent', 'MouseEvent', 'Border']
 """
 Libraries for writing Graphical User Interface
 
@@ -15,5 +15,7 @@ from RxAPI.RxGUI.TextEdit import TextEdit
 from RxAPI.RxGUI.Font import Font
 from RxAPI.RxGUI.Color import Color
 from RxAPI.RxGUI.Button import Button
+from RxAPI.RxGUI.Event import Event
 from RxAPI.RxGUI.KeyEvent import KeyEvent
+from RxAPI.RxGUI.MouseEvent import MouseEvent
 from RxAPI.RxGUI.Border import Border
