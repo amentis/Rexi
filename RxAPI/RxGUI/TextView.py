@@ -17,11 +17,11 @@ class TextView(RxGUIObject, RxDynamic):
         self.__width = ''
         self.__style_internal_enabled = False
         self.__style_internal = ""
-        self.__font = Font(self, "font")
-        self.__text_color = Color("textColor")
-        self.__background_color = Color("backgroundColor")
+        self.__font = Font.Font(self, "font")
+        self.__text_color = Color.Color("textColor")
+        self.__background_color = Color.Color("backgroundColor")
         self.__text = text
-        self.__border = Border(self, "border")
+        self.__border = Border.Border(self, "border")
         self._parent.add_child(self)
         self.__css = ""
         self._parent.append_javascript("var %s = new TextView(\"%s\"); \n" % (self.get_name(), self.get_name()))
