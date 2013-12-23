@@ -183,24 +183,24 @@ javascript_class = """
 function TextView (name) {
     this.name = name;
     this.set_size = function(width, height) {
-        document.getElementById(this.name).style.width = width;
-        document.getElementById(this.name).style.height = height;
+        $(\"#\" + this.name).style.width = width;
+        $(\"#\" + this.name).style.height = height;
     };
     this.get_font = function() {
-        return document.getElementById(this.name).style.font;
+        $(\"#\" + this.name).style.font;
     };
     this.get_colors = function() {
-        return [document.getElementById(this.name).style.color, document.getElementById(name).background-color];
+        return [$(\"#\" + this.name).style.color, $(\"#\" + this.name).background-color];
     };
     this.get_text = function () {
-        return document.getElementById(this.name).innerHTML;
+        return $(\"#\" + this.name).innerHTML;
     };
     this.set_size = function (width, height) {
-        document.getElementById(this.name).style.width = width;
-        document.getElementById(this.name).style.width = height;
+        $(\"#\" + this.name).style.width = width;
+        $(\"#\" + this.name).style.width = height;
     };
     this.set_text = function (text) {
-        document.getElementById(this.name).innerHTML = text;
+        $(\"#\" + this.name).innerHTML = text;
     };
 }
 """

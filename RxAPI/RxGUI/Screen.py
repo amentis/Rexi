@@ -31,9 +31,10 @@ class Screen(RxGUIObject, RxDynamic):
         <html>
         <head>
         <title> %s</title>
-        <script> window.onload = function() {
+        <script src="jquery-2.0.3.min.js"></script>
+        <script> $(document).ready(function(){
         %s
-        }</script>
+        });</script>
         <style> %s </style>
         </head>
         <body> %s </body>

@@ -29,17 +29,17 @@ class RxDynamic(RxObject):
         receiver object method
         """
         if not key:
-            self._javascript = """document.getElementById(\"%s\").%s = %s.%s;""" % (
+            self._javascript = """$(\"#%s\").%s = %s.%s;""" % (
                 self.get_name(), event, receiver, method)
         else:
             self._javascript = """
-            document.getElementById(\"%s\").%s = function (event) {
+            $(\"#%s\").%s = function (event) {
                 if (event.which == %d || event.keyCode == %d) {
+                    event.preventDefault();
                     %s.%s;
                 }
             };
             """ % (self.get_name(), event, key, key, receiver, method)
-        self._parent.append_javascript(self._javascript)
 
     def append_javascript(self, javascript):
         self._javascript += javascript
