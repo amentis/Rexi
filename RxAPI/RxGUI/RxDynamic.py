@@ -29,10 +29,10 @@ class RxDynamic(RxObject):
         receiver object method
         """
         if not key:
-            self._javascript = """$(\"#%s\").%s = %s.%s;""" % (
+            self._javascript += """$(\"#%s\").%s = %s.%s;""" % (
                 self.get_name(), event, receiver, method)
         else:
-            self._javascript = """
+            self._javascript += """
             $(\"#%s\").%s(function (event) {
                 if (event.which == %d || event.keyCode == %d) {
                     event.preventDefault();

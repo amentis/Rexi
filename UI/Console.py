@@ -23,7 +23,9 @@ class Console(Screen):
         self._output.set_border(Border("OutputBorder", Color("OutputBorderColor", "Black")))
         self._input.set_border(Border("InputBorder", Color("InputBorderColor", "Black")))
         self._input.connect("keypress", self._output.get_name(),
-                            "set_text(%s.get_text())" % self._input.get_name(), 13)
+                            "append_text(\"<br>\" + %s.get_text())" % self._input.get_name(), 13)
+        self._input.connect("keypress", self._output.get_name(),
+                            "clear_text()", 13)
 
     def get(self):
         return Screen.get(self)

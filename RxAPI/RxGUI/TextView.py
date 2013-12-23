@@ -127,6 +127,15 @@ class TextView(RxGUIObject, RxDynamic):
         """
         return self.__text
 
+    def append_text(self, text):
+        self.__text += text
+
+    def prepend_text(self, text):
+        self.__text = text + self.__text
+
+    def clear_text(self):
+        self.__text = ""
+
     def get(self):
         """
 
@@ -201,6 +210,16 @@ function TextView (name) {
     };
     this.set_text = function (text) {
         $(\"#\" + this.name).text(text);
+    };
+
+    this.append_text = function (text) {
+        $(\"#\" + this.name).text($(\"#\" + this.name).text() + text);
+    };
+    this.prepend_text = function (text) {
+        $(\"#\" + this.name).text(text + $(\"#\" + this.name).text());
+    };
+    this.clear_text = function () {
+        $(\"#\" + this.name).text(\"\");
     };
 }
 """

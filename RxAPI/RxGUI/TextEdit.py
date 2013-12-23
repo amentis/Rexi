@@ -132,6 +132,15 @@ class TextEdit(RxGUIObject, RxDynamic):
         """
         return self._text
 
+    def append_text(self, text):
+        self._text += text
+
+    def prepend_text(self, text):
+        self._text = text + self._text
+
+    def clear_text(self):
+        self._text = ""
+
     def get(self):
         """
 
@@ -208,7 +217,16 @@ function TextEdit (name) {
         return $(\"#\" + this.name).val();
     };
     this.set_text = function (text) {
-        $(\"#\" + this.name).text(text);
+        $(\"#\" + this.name).val(text);
+    };
+    this.append_text = function (text) {
+        $(\"#\" + this.name).val($(\"#\" + this.name).val() + text);
+    };
+    this.prepend_text = function (text) {
+        $(\"#\" + this.name).val(text + $(\"#\" + this.name).val());
+    };
+    this.clear_text = function () {
+        $(\"#\" + this.name).val(\"\");
     };
 }
 """
