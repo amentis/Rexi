@@ -1,14 +1,16 @@
 __author__ = 'amentis'
-from RxAPI.RxGUI import RxDynamic
+from RxAPI.RxGUI import RxGUIObject, RxDynamic
+from RxAPI import RxObject
 
 
-class Event(RxDynamic):
-    def __init__(self, modifiers, functions, event_type):
+class Event(RxGUIObject, RxDynamic):
+    def __init__(self, name, parent, modifiers, functions, event_type):
         """
         @param modifiers: list
         @param functions: dict
         """
-        RxDynamic.__init__(RxDynamic(self))
+        RxGUIObject.__init__(self, name, parent)
+        RxDynamic.__init__(RxObject(self))
         if "alt" in modifiers:
             self._alt = True
         else:
@@ -23,7 +25,6 @@ class Event(RxDynamic):
             self._ctrl = False
         self._functions = functions
         self._sender = ""
-        self._target = ""
         self._type = event_type
 
     def set_sender(self, sender):
@@ -37,32 +38,6 @@ class Event(RxDynamic):
         @rtype : str
         """
         return self._sender
-
-    def set_target(self, target):
-        """
-        @param target: str
-        """
-        self._target = target
-
-    def get_target(self):
-        """
-        @rtype : str
-        """
-        return self._target
-
-    def set_connection(self, sender, target):
-        """
-        @param sender: str
-        @param target: str
-        """
-        self._sender = sender
-        self._target = target
-
-    def get_connection(self):
-        """
-        @rtype : list
-        """
-        return [self._sender, self._target]
 
     def add_function(self, name, function):
         """

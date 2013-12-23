@@ -119,3 +119,17 @@ class KeyEvent(Event):
         @param key_name: str
         """
         self._key = self.__key_numbers[key_name]
+
+    def get(self):
+        functions = ""
+        for s in self._functions.values:
+            functions += s
+        self._javascript = """
+        $("#%s").%s(function(event){
+                if (event.which == %d) {
+                    event.preventDefault();
+                    %s
+                }
+            }
+        )
+                """ % (self._sender, self._type, self._key, functions)
