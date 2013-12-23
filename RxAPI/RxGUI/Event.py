@@ -3,7 +3,7 @@ from RxAPI.RxGUI import RxDynamic
 
 
 class Event(RxDynamic):
-    def __init__(self, modifiers, functions):
+    def __init__(self, modifiers, functions, event_type):
         """
         @param modifiers: list
         @param functions: dict
@@ -24,6 +24,7 @@ class Event(RxDynamic):
         self._functions = functions
         self._sender = ""
         self._target = ""
+        self._type = event_type
 
     def set_sender(self, sender):
         """
