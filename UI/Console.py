@@ -22,7 +22,7 @@ class Console(Screen):
         self._input.set_background_color(self._fields_bckg_color)
         self._output.set_border(Border("OutputBorder", Color("OutputBorderColor", "Black")))
         self._input.set_border(Border("InputBorder", Color("InputBorderColor", "Black")))
-        self._input.connect("onkeypress", self._output.get_name(),
+        self._input.connect("keypress", self._output.get_name(),
                             "set_text(%s.get_text())" % self._input.get_name(), 13)
 
     def get(self):

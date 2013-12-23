@@ -193,14 +193,14 @@ function TextView (name) {
         return [$(\"#\" + this.name).style.color, $(\"#\" + this.name).background-color];
     };
     this.get_text = function () {
-        return $(\"#\" + this.name).innerHTML;
+        return $(\"#\" + this.name).html();
     };
     this.set_size = function (width, height) {
         $(\"#\" + this.name).style.width = width;
         $(\"#\" + this.name).style.width = height;
     };
     this.set_text = function (text) {
-        $(\"#\" + this.name).innerHTML = text;
+        $(\"#\" + this.name).text(text);
     };
 }
 """

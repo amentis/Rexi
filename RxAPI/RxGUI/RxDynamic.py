@@ -33,12 +33,12 @@ class RxDynamic(RxObject):
                 self.get_name(), event, receiver, method)
         else:
             self._javascript = """
-            $(\"#%s\").%s = function (event) {
+            $(\"#%s\").%s(function (event) {
                 if (event.which == %d || event.keyCode == %d) {
                     event.preventDefault();
                     %s.%s;
                 }
-            };
+            });
             """ % (self.get_name(), event, key, key, receiver, method)
 
     def append_javascript(self, javascript):
