@@ -26,7 +26,7 @@ class Console(Screen):
                                   dict(
                                       append="append_text(\"<br>\" + %s.get_text())" % self._input.get_name(),
                                       clear="clear_text()"
-                                  )).get()
+                                  ))
 
     def get(self):
         return Screen.get(self)

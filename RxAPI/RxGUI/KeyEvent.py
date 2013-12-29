@@ -5,6 +5,7 @@ from RxAPI.RxGUI import Event
 class KeyEvent(Event):
     def __init__(self, screen, key_name, functions, event_type="keypress", modifiers=""):
         """
+        @param screen: Screen
         @param key_name: str
         @param functions: dict
         @param modifiers: str
@@ -134,4 +135,4 @@ class KeyEvent(Event):
         )
                 """ % (self._sender, self._type, self._key, functions)
 
-        self.append_javascript(self._javascript)
+        return self._javascript
