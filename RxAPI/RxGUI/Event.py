@@ -3,13 +3,12 @@ from RxAPI.RxGUI import RxGUIObject, RxDynamic
 from RxAPI import RxObject
 
 
-class Event(RxGUIObject, RxDynamic):
-    def __init__(self, name, parent, modifiers, functions, event_type):
+class Event(RxDynamic):
+    def __init__(self, modifiers, functions, event_type):
         """
         @param modifiers: list
         @param functions: dict
         """
-        RxGUIObject.__init__(self, name, parent)
         RxDynamic.__init__(RxObject(self))
         if "alt" in modifiers:
             self._alt = True

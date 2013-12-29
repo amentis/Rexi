@@ -6,12 +6,12 @@ class KeyEvent(Event):
     def __init__(self, key_name, functions, event_type="keypress", modifiers=""):
         """
         @param key_name: str
-        @param modifiers: str
         @param functions: dict
+        @param modifiers: str
         @param event_type: str
         """
         Event.__init__(self, modifiers, functions, event_type)
-        self.__key_numbers = dict
+        self.__key_numbers = dict()
 
         self.__key_numbers['Backspace'] = 8
         self.__key_numbers['Tab'] = 9
