@@ -2,7 +2,7 @@ __author__ = 'amentis'
 from RxAPI.RxGUI import Event
 
 
-class KeyEvent(Event):
+class MouseEvent(Event):
     def __init__(self, button_name, modifiers, functions, event_type):
         """
         @param button_name: str
@@ -19,3 +19,17 @@ class KeyEvent(Event):
 
     def set_button(self, button_name):
         self._button = self.__button_numbers[button_name]
+
+    def get(self):
+        functions = ""
+        for s in self._functions.values:
+            functions += s
+        self._javascript = """
+        $("#%s").%s(function(event){
+                if (event.which == %d) {
+                    event.preventDefault();
+                    %s
+                }
+            }
+        )
+                """ % (self._sender, self._type, self._button, functions)

@@ -3,7 +3,7 @@ from RxAPI.RxGUI import Event
 
 
 class KeyEvent(Event):
-    def __init__(self, key_name, modifiers, functions, event_type):
+    def __init__(self, key_name, functions, event_type="keypress", modifiers=""):
         """
         @param key_name: str
         @param modifiers: str
