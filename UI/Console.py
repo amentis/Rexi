@@ -28,5 +28,6 @@ class Console(Screen):
                                   clear="clear_text()"
                                   ))
         self._on_enter.get()
+
     def get(self):
         return Screen.get(self)
