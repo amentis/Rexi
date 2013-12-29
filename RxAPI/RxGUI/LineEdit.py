@@ -193,7 +193,7 @@ class LineEdit(RxGUIObject, RxDynamic):
 
 
 javascript_class = """
-    function TextEdit (name) {
+    function LineEdit (name) {
         this.name = name;
         this.set_size = function(width, height) {
             $(\"#\" + this.name).style.width = width;
