@@ -25,6 +25,7 @@ class Console(Screen):
         self._on_enter = KeyEvent(self, "input", "Enter",
                                   (
                                       "output.append_text(%s.get_text() + \"<br />\")" % self._input.get_name(),
+                                      "$(\"#output\").scrollTop($(\"#output\")[0].scrollHeight)",
                                       "input.clear_text()"
                                   ))
 

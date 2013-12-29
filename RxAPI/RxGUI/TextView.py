@@ -147,7 +147,7 @@ class TextView(RxGUIObject, RxDynamic):
         if self.__style_internal_enabled:
             style += self.__style_internal
         style += """
-        #%s {color: %s;font: %s;  %s background-color: %s;}
+        #%s {color: %s;font: %s;  %s background-color: %s; overflow: auto;}
         """ % (self.get_name(), self.__text_color.get(), self.__font.get(), self.__border.get(),
                self.__background_color.get())
 
