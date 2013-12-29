@@ -156,7 +156,7 @@ class TextView(RxGUIObject, RxDynamic):
         self._parent.append_javascript(self.get_javascript())
 
         return """
-        <p id="{0}">{1}</p>
+        <p id=\"{0}\" class=\"TextView\">{1}</p>
             """ .format(self.get_name(), self.__text)
 
     def set_size(self, width, height):
@@ -213,7 +213,7 @@ function TextView (name) {
     };
 
     this.append_text = function (text) {
-        $(\"#\" + this.name).text($(\"#\" + this.name).text() + text);
+        $(\"#\" + this.name).html($(\"#\" + this.name).html() + text);
     };
     this.prepend_text = function (text) {
         $(\"#\" + this.name).text(text + $(\"#\" + this.name).text());

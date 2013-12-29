@@ -22,10 +22,10 @@ class Console(Screen):
         self._input.set_background_color(self._fields_bckg_color)
         self._output.set_border(Border("OutputBorder", Color("OutputBorderColor", "Black")))
         self._input.set_border(Border("InputBorder", Color("InputBorderColor", "Black")))
-        self._on_enter = KeyEvent(self, "Enter",
-                                  dict(
-                                      append="append_text(\"<br>\" + %s.get_text())" % self._input.get_name(),
-                                      clear="clear_text()"
+        self._on_enter = KeyEvent(self, "input", "Enter",
+                                  (
+                                      "output.append_text(%s.get_text() + \"<br />\")" % self._input.get_name(),
+                                      "input.clear_text()"
                                   ))
 
     def get(self):

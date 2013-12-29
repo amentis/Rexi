@@ -4,15 +4,16 @@ from RxAPI import RxObject
 
 
 class Event(RxDynamic, RxGUIObject):
-    def __init__(self, parent, modifiers, functions, event_type):
+    def __init__(self, parent, sender, modifiers, functions, event_type):
         """
         @param parent: RxGUIObject
         @param modifiers: list
-        @param functions: dict
+        @param functions: list
         @param event_type: str
         """
-        RxGUIObject.__init__(self,"__event__",parent)
+        RxGUIObject.__init__(self, "__event__", parent)
         RxDynamic.__init__(RxObject(self))
+        self._parent.add_child(self)
         if "alt" in modifiers:
             self._alt = True
         else:
@@ -26,7 +27,7 @@ class Event(RxDynamic, RxGUIObject):
         else:
             self._ctrl = False
         self._functions = functions
-        self._sender = ""
+        self._sender = sender
         self._type = event_type
 
     def set_sender(self, sender):
@@ -41,30 +42,29 @@ class Event(RxDynamic, RxGUIObject):
         """
         return self._sender
 
-    def add_function(self, name, function):
+    def add_function(self, function):
         """
-        @param name: str
         @param function: str
         """
-        self._functions[name] = function
+        self._functions.append(function)
 
-    def get_function(self, name):
+    def get_function(self, number):
         """
-        @rtype : str
+        @rtype : int
         """
-        return self._functions[name]
+        return self._functions[number]
 
     def get_all_functions(self):
         """
         @rtype : list
         """
-        return self._functions.values
+        return self._functions
 
-    def remove_function(self, name):
+    def remove_function(self, number):
         """
-        @param name: str
+        @param number: int
         """
-        self._functions.pop(name)
+        self._functions.pop(number)
 
     def remove_all_functions(self):
         self._functions.clear()
