@@ -4,11 +4,12 @@ from RxAPI import RxObject
 
 
 class Event(RxDynamic):
-    def __init__(self, modifiers, functions, event_type):
+    def __init__(self, screen, modifiers, functions, event_type):
         """
         @param modifiers: list
         @param functions: dict
         """
+        self._screen = screen
         RxDynamic.__init__(RxObject(self))
         if "alt" in modifiers:
             self._alt = True

@@ -3,14 +3,14 @@ from RxAPI.RxGUI import Event
 
 
 class KeyEvent(Event):
-    def __init__(self, key_name, functions, event_type="keypress", modifiers=""):
+    def __init__(self, screen, key_name, functions, event_type="keypress", modifiers=""):
         """
         @param key_name: str
         @param functions: dict
         @param modifiers: str
         @param event_type: str
         """
-        Event.__init__(self, modifiers, functions, event_type)
+        Event.__init__(self, screen, modifiers, functions, event_type)
         self.__key_numbers = dict()
 
         self.__key_numbers['Backspace'] = 8
@@ -122,7 +122,7 @@ class KeyEvent(Event):
 
     def get(self):
         functions = ""
-        for s in self._functions.values:
+        for s in self._functions.values():
             functions += s
         self._javascript = """
         $("#%s").%s(function(event){
@@ -133,3 +133,5 @@ class KeyEvent(Event):
             }
         )
                 """ % (self._sender, self._type, self._key, functions)
+
+        self.append_javascript(self._javascript)
