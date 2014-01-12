@@ -19,10 +19,10 @@ class Border(RxGUIObject):
         self._style = style
         self._width = width
         if color is None:
-            self._color = Color.Color()
+            self._color = Color.Color('borderColor')
             self._color.color_by_name('Black')
         else:
-            self._color = color
+            self._color = Color.Color('borderColor', color)
 
     def get(self):
         """

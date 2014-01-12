@@ -18,11 +18,11 @@ class LineEdit(RxGUIObject, RxDynamic):
         self._style_internal_enabled = False
         self._style_internal = ""
         self._css = ""
-        self._font = Font.Font(self, "font")
-        self._text_color = Color.Color("textColor")
-        self._background_color = Color.Color("backgroundColor", "White")
+        self._font = Font(self, "font")
+        self._text_color = Color("textColor")
+        self._background_color = Color("backgroundColor", "White")
         self._text = text
-        self._border = Border.Border(self, "border")
+        self._border = Border(self, "border")
         self._parent.add_child(self)
         self._parent.append_javascript("var %s = new TextEdit(\"%s\"); \n" % (self.get_name(), self.get_name()))
 

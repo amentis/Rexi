@@ -11,15 +11,16 @@ class Label(RxGUIObject, RxDynamic):
         @param text: str
         """
         RxGUIObject.__init__(self, name, parent)
+        RxDynamic.__init__(self)
         if not text:
             text = name
         self.__text = text
         self.__height = ''
         self.__width = ''
-        self.__font = Font.Font(self, "font")
-        self.__text_color = Color.Color("textColor")
-        self.__background_color = Color.Color("backgroundColor")
-        self.__border = Border.Border(self, "border")
+        self.__font = Font(self, "font")
+        self.__text_color = Color("textColor")
+        self.__background_color = Color("backgroundColor")
+        self.__border = Border(self, "border")
         self._parent.add_child(self)
         self.__css = ""
 
@@ -112,19 +113,6 @@ class Label(RxGUIObject, RxDynamic):
 
     def clear_text(self):
         self.__text = ""
-
-    def set_size(self, width, height):
-        """
-
-        @param width: str
-        @param height: str
-        """
-        self.__width = width
-        self.__height = height
-
-        self.__css += """
-            #%s {display: block; width: %s; height: %s; }
-            """ % (self.get_name(), self.__width, self.__height)
 
     def get_width(self):
         """
