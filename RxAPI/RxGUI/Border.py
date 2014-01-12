@@ -8,11 +8,11 @@ class Border(RxGUIObject):
     """
     def __init__(self, name, color=None, style="solid", width="1px"):
         """
-        @param name: str
-        @param color: Color
-        @param style: str
+        @param name: str name of the REXI object
+        @param color: Color color of the border
+        @param style: str style of the border, acceptable values:
         none, hidden, dotted, dashed, solid, double, groove, ridge, inset, outset, inherit
-        @param width: str
+        @param width: str width of the border, acceptable values:
         thin, medium, thick, N%/px/cm/etc., inherit
         """
         RxGUIObject.__init__(self, name, None)
@@ -26,7 +26,6 @@ class Border(RxGUIObject):
 
     def get(self):
         """
-        @rtype : str
-        @return : portion of CSS, defining the border
+        @return : str CSS code defining the border
         """
         return "border: %s %s %s ;" % (self._width, self._style, self._color.get())

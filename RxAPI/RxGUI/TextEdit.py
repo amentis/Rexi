@@ -7,9 +7,9 @@ class TextEdit(RxGUIObject, RxDynamic):
 
     def __init__(self, parent, name, text=" "):
         """
-        @param parent: RxGUIObject
-        @param name: str
-        @param text: str
+        @param parent: RxGUIObject parent REXI object
+        @param name: str name of the REXI object
+        @param text: str value of the text input field
         """
         RxGUIObject.__init__(self, name, parent)
         RxDynamic.__init__(self)
@@ -28,7 +28,7 @@ class TextEdit(RxGUIObject, RxDynamic):
 
     def set_size(self, width, height):
         """
-        Sets the size for the TextEdit object
+        set the size for the TextEdit object
         @param width: str
         @param height: str
         """
@@ -37,115 +37,115 @@ class TextEdit(RxGUIObject, RxDynamic):
 
     def enable_internal_style(self, style):
         """
-        Enables an internal user-inputted CSS style to the TextEdit object by providing proper CSS
-        @param style: str
+        enable an internal user-inputted CSS style to the TextEdit object by providing proper CSS
+        @param style: str css to be set as internal style
         """
         self._style_internal_enabled = True
         self._style_internal = style
 
     def disable_internal_style(self):
         """
-        Disables user-inputted CSS style
+        disable user-inputted CSS style
         """
         self._style_internal_enabled = False
 
     def set_font(self, font):
         """
-        Sets the font for the text in the TextEdit object
+        set the font for the text in the TextEdit object
         @param font: Font
         """
         self._font = font
 
     def set_text_color(self, color):
         """
-        Sets the color for the text in the TextEdit object
+        set the color for the text in the TextEdit object
         @param color: Color
         """
         self._text_color = color
 
     def set_background_color(self, color):
         """
-        Sets the background color for the TextEdit object
+        set the background color for the TextEdit object
         @param color: Color
         """
         self._background_color = color
 
     def set_border(self, border):
         """
-        Sets a border for the TextEdit object
+        set a border for the TextEdit object
         @param border: Color
         """
         self._border = border
 
     def get_border(self):
         """
-        Gets the border of the TextEdit object
-        @rtype : Border
-        @return: Border of the text edit widget
+        @return: Border border of the text edit widget
         """
         return self._border
 
     def set_text(self, text):
         """
-        Sets a value for the TextEdit object
-        @param text: str
+        set a value for the TextEdit object
+        @param text: str value of the text field
         """
         self._text = text
 
     def get_size(self):
         """
-        Gets the size of the TextEdit object
-        @rtype: list
-        @return list of width as str and height as str
+        get the size of the TextEdit object
+        @return list list of width as str and height as str
         """
         return [self._width, self._height]
 
     def get_style_internal_status(self):
         """
-        Gets a list of a bool and a str, the bool defines whether internal style is enabled and the str is the internal
-        style
-        @rtype : list
-        @return : list of style_internal_enabled as boolean and style_internal as str
+        get a list of a bool and a str, the bool defines whether internal style is enabled and the str is
+        the internal style
+        @return : list list of style_internal_enabled as boolean and style_internal as str
         """
         return [self._style_internal_enabled, self._style_internal]
 
     def get_font(self):
         """
-        Gets the font of the text in the TextEdit object
-        @return: Font
+        @return: Font font of the text in the TextEdit object
         """
         return self._font
 
     def get_colors(self):
         """
-        Gets the list of the text color as str and the background color as str
-        @rtype : list
         @return : list of text color as str and background_color as str
         """
         return [self._text_color, self._background_color]
 
     def get_text(self):
         """
-        gets the text of the
-        @rtype : str
         @return : text of the text edit field
         """
         return self._text
 
     def append_text(self, text):
+        """
+        add text to the end of the value of the text edit field
+        @param text: text to be appended
+        """
         self._text += text
 
     def prepend_text(self, text):
+        """
+        add text to the beginning of the text edit field
+        @param text: text to be appended
+        """
         self._text = text + self._text
 
     def clear_text(self):
+        """
+        erase the value of the text edit field
+        """
         self._text = ""
 
     def get(self):
         """
-
-        @rtype : str
-        @return: HTML of the text edit field
+        @return: str HTML of the text edit field
         """
         style = " "
         if self._style_internal_enabled:
@@ -164,32 +164,15 @@ class TextEdit(RxGUIObject, RxDynamic):
         <textarea id="{0}" class="TextEdit">{1}</textarea>
             """.format(self.get_name(), self._text)
 
-    def set_size(self, width, height):
-        """
-
-        @param width: str
-        @param height: str
-        """
-        self._width = width
-        self._height = height
-
-        self._css += """
-            #%s {display: block; width: %s; height: %s; resize:none; }
-            """ % (self.get_name(), self._width, self._height)
-
     def get_width(self):
         """
-
-
-        @return: str
+        @return: str width of the text edit field
         """
         return self._width
 
     def get_height(self):
         """
-
-
-        @return: str
+        @return: str height of the text edit field
         """
         return self._height
 

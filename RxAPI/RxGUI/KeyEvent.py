@@ -3,16 +3,26 @@ from RxAPI.RxGUI import Event
 
 
 class KeyEvent(Event):
-    def __init__(self, parent, sender, key_name, functions, event_type="keypress", modifiers=""):
+    """
+    definition for an event, being called upon keyboard event
+    """
+    def __init__(self, parent, sender, key_name, actions, event_type="keypress", modifiers=""):
         """
-        @param parent: RxGUIObject
-        @param sender: str
-        @param key_name: str
-        @param functions: list
-        @param modifiers: str
-        @param event_type: str
+        @param parent: RxGUIObject parent object
+        @param sender: str name of the object sending the event
+        @param key_name: name of the keyboard key. Acceptable values:
+        'Backspace', 'Tab', 'Enter', 'Shift', 'Ctrl', 'Alt', 'PauseBreak', 'CapsLock', 'Esc', 'PageUp',
+        'PageDown', 'End', 'Home', 'Left', 'Up', 'Right', 'Down', 'Insert', 'Delete', '0', '1', '2', '3', '4',
+        '5', '6', '7', '8', '9', 'colon', 'equals', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
+        'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'Meta', 'Super', 'Win', 'RightClick',
+        'Num0', 'Num1', 'Num2', 'Num3', 'Num4', 'Num5', 'Num6', 'Num7', 'Num8', 'Num9', 'Num*', 'Num+', 'Num-',
+        'Num.', 'Num/', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'NumLock',
+        ScrollLock', ',', '.', '/', '`', '[', ']', '/', '"'
+        @param actions: list list of str, methods to be called on this event
+        @param modifiers: list list of str, keyboard modifiers (alt, shift and/or ctrl)
+        @param event_type: str type of event. Acceptable values: keydown, keypress, keyup
         """
-        Event.__init__(self, parent, sender, modifiers, functions, event_type)
+        Event.__init__(self, parent, sender, modifiers, actions, event_type)
         self.__key_numbers = dict()
 
         self.__key_numbers['Backspace'] = 8
@@ -118,13 +128,24 @@ class KeyEvent(Event):
 
     def set_key(self, key_name):
         """
-        @param key_name: str
+        set the key which triggers the event
+        @param key_name: name of the keyboard key. Acceptable values:
+        'Backspace', 'Tab', 'Enter', 'Shift', 'Ctrl', 'Alt', 'PauseBreak', 'CapsLock', 'Esc', 'PageUp',
+        'PageDown', 'End', 'Home', 'Left', 'Up', 'Right', 'Down', 'Insert', 'Delete', '0', '1', '2', '3', '4',
+        '5', '6', '7', '8', '9', 'colon', 'equals', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
+        'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'Meta', 'Super', 'Win', 'RightClick',
+        'Num0', 'Num1', 'Num2', 'Num3', 'Num4', 'Num5', 'Num6', 'Num7', 'Num8', 'Num9', 'Num*', 'Num+', 'Num-',
+        'Num.', 'Num/', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'NumLock',
+        ScrollLock', ',', '.', '/', '`', '[', ']', '/', '"'
         """
         self._key = self.__key_numbers[key_name]
 
     def get(self):
+        """
+        setup the key event
+        """
         functions = ""
-        for s in self._functions:
+        for s in self._actions:
             functions += s + "; \n"
         self._javascript = """
         $("#%s").%s(function(event){

@@ -4,7 +4,9 @@ from RxAPI import RxObject
 
 
 class RxDynamic(RxObject):
-    """ Wrapper for dynamic (JavaScript - dependent) REXI classes """
+    """
+    Wrapper for dynamic (JavaScript - dependent) REXI classes
+    """
 
     def __init__(self):
         self._javascript = ""

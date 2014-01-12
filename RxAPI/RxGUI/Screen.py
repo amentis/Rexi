@@ -3,17 +3,15 @@ from RxAPI.RxGUI import RxGUIObject, RxDynamic
 
 
 class Screen(RxGUIObject, RxDynamic):
+    """
+    The main holder for GUI elements. Represents the entire HTML body
+    """
 
     def __init__(self, title, body=""):
         """
-                @type self: str
-                ( HTML 5 )
-                @type title: str
-                ( Page title )
-                @type body: str
-                ( HTML 5 )
-                The main holder for GUI elements. Represents the entire HTML body
-                """
+        @param title: str Page title
+        @param body: str HTML body
+        """
         RxGUIObject.__init__(self, "screen", None)
         RxDynamic.__init__(self)
         self.__css = ""
@@ -22,8 +20,7 @@ class Screen(RxGUIObject, RxDynamic):
 
     def get(self):
         """
-        @rtype: str
-        @return: Complete HTML 5 page
+        @return: str complete HTML 5 page
         """
         for element in self.get_children():
             self.__body += element.get()
@@ -43,47 +40,40 @@ class Screen(RxGUIObject, RxDynamic):
 
     def get_title(self):
         """
-        Gets the title of the Screen object
-        @return : Page title
-        @rtype : str
+        @return : str page title
         """
         return self.__title
 
     def set_title(self, title):
         """
-        Sets the title of the Screen object
-        @param title: str
-        page title
+        set the title of the Screen object - page
+        @param title: str page title
         """
         self.__title = title
 
     def get_css(self):
         """
-        Gets the current CSS appended to this Screen
-        @rtype: str
-        @return: CSS, complete CSS of the page
+        get the current CSS appended to this Screen
+        @return: str complete code CSS of the page
         """
         return self.__css
 
     def add_css(self, css):
         """
-        Appends CSS to this Screen
-        @type self: str
-        proper CSS
+        append CSS to this Screen
+        @param css: str CSS to be appended
         """
         self.__css += css
 
     def get_body(self):
         """
-        Gets the Body content of the Screen
-        @rtype: str
-        @return: HTML body content
+        @return: str HTML body content
         """
         return self.__body
 
     def set_background_color(self, color):
         """
-        Sets the background color of the Screen
+        set the background color of the Screen
         @param color: Color
         """
         self.__css += """

@@ -3,8 +3,7 @@ __all__ = ['RxGUIObject', 'RxDynamic', 'Window', 'Screen', 'TextView', 'TextEdit
            'Event', 'KeyEvent', 'MouseEvent', 'Border', 'Label', 'LineEdit', 'PasswordEdit']
 """
 Libraries for writing Graphical User Interface
-
-@todo Button KeyEvent
+@todo Button
 """
 from RxAPI.RxGUI.RxGUIObject import RxGUIObject
 from RxAPI.RxGUI.RxDynamic import RxDynamic

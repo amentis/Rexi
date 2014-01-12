@@ -3,11 +3,13 @@ from RxAPI.RxGUI import RxGUIObject, RxDynamic
 
 
 class Window(RxGUIObject, RxDynamic):
+    """
+    an element holder to organize elements
+    """
     def __init__(self, parent, name):
         """
-
-        @param parent: RxGUIObject
-        @param name: str
+        @param parent: RxGUIObject parent object
+        @param name: str name of the REXI object
         """
         RxGUIObject.__init__(self, name, parent)
         RxDynamic.__init__(self)
@@ -19,9 +21,7 @@ class Window(RxGUIObject, RxDynamic):
 
     def get(self):
         """
-
-        @rtype: str
-        @return: HTML of the Window
+        @return: str HTML code of the Window
         """
         for element in self.get_children():
             self.__body += element.get()
@@ -35,32 +35,26 @@ class Window(RxGUIObject, RxDynamic):
 
     def get_body(self):
         """
-
-        @rtype: str
-        @return: HTML body of the window
+        @return: str HTML body of the window
         """
         return self.__body
 
     def get_css(self):
         """
-
-
-        @return: CSS of the Window
-        @rtype: str
+        @return: str CSS of the Window
         """
         return self.__css
 
     def add_css(self, css):
         """
-
-        @param css: str
-        CSS to be appended
+        add CSS code to the window object
+        @param css: str CSS code to be appended
         """
         self.__css += css
 
     def set_size(self, width, height):
         """
-
+        set the size for the Window object
         @param width: str
         @param height: str
         """
@@ -73,18 +67,18 @@ class Window(RxGUIObject, RxDynamic):
 
     def get_width(self):
         """
-
-        @rtype : str
+        @return: str width of the text edit field
         """
         return self.__width
 
     def get_height(self):
         """
-
-
-        @rtype: str
+        @return: str height of the text edit field
         """
         return self.__height
 
     def center(self):
+        """
+        orient all the elements in the window to the center
+        """
         self.__css += "#%s {margin-left: auto; margin-right: auto;}" % self.get_name()

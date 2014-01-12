@@ -5,19 +5,20 @@ from RxAPI.RxGUI import LineEdit
 
 class PasswordEdit(LineEdit):
     """
-        @param parent: RxGUIObject
-        @param name: str
-        @param text: str
-        """
+    password input field
+    """
     def __init__(self, parent, name, text=" "):
+        """
+        @param parent: RxGUIObject parent REXI object
+        @param name: str name of the REXI object
+        @param text: str value of the line edit field
+        """
         LineEdit.__init__(self, parent, name, text)
 
     def get(self):
         """
-
-                @rtype : str
-                @return: HTML of the text edit field
-                """
+        @return: str HTML of the password edit field
+        """
         style = " "
         if self._style_internal_enabled:
             style += self._style_internal

@@ -6,10 +6,9 @@ class TextView(RxGUIObject, RxDynamic):
 
     def __init__(self, parent, name, text=" "):
         """
-
-        @param parent: RxGUIObject
-        @param name: str
-        @param text: str
+        @param parent: RxGUIObject parent REXI object
+        @param name: str name of the REXI object
+        @param text: str value of the text input field
         """
         RxGUIObject.__init__(self, name, parent)
         RxDynamic.__init__(self)
@@ -28,7 +27,7 @@ class TextView(RxGUIObject, RxDynamic):
 
     def set_size(self, width, height):
         """
-
+        set the size for the TextEdit object
         @param width: str
         @param height: str
         """
@@ -37,111 +36,114 @@ class TextView(RxGUIObject, RxDynamic):
 
     def enable_internal_style(self, style):
         """
-
-        @param style: str
+        enable an internal user-inputted CSS style to the TextEdit object by providing proper CSS
+        @param style: str css to be set as internal style
         """
         self.__style_internal_enabled = True
         self.__style_internal = style
 
     def disable_internal_style(self):
+        """
+        disable user-inputted CSS style
+        """
         self.__style_internal_enabled = False
 
     def set_font(self, font):
         """
-
-        @param font: Font
+        disable user-inputted CSS style
         """
         self.__font = font
 
     def set_text_color(self, color):
         """
-
+        set the color for the text in the TextEdit object
         @param color: Color
         """
         self.__text_color = color
 
     def set_background_color(self, color):
         """
-
+        set the background color for the TextEdit object
         @param color: Color
         """
         self.__background_color = color
 
     def set_border(self, border):
         """
-
-        @param border: Border
+        set a border for the TextEdit object
+        @param border: Color
         """
         self.__border = border
 
     def get_border(self):
         """
-
-
-        @return: Border
+        @return: Border border of the text edit widget
         """
         return self.__border
 
     def set_text(self, text):
         """
-
-        @param text: str
+        set a value for the TextEdit object
+        @param text: str value of the text field
         """
         self.__text = text
 
     def get_size(self):
         """
-
-        @rtype : list
-        @return : list of width as str and height as str
+        get the size of the TextEdit object
+        @return list list of width as str and height as str
         """
         return [self.__width, self.__height]
 
     def get_style_internal_status(self):
         """
-
-        @rtype : list
-        @return : list of internal style enabled as boolean and internal style as str
+        get a list of a bool and a str, the bool defines whether internal style is enabled and the str is
+        the internal style
+        @return : list list of style_internal_enabled as boolean and style_internal as str
         """
         return [self.__style_internal_enabled, self.__style_internal]
 
     def get_font(self):
         """
-
-        @rtype : Font
+        @return: Font font of the text in the TextEdit object
         """
         return self.__font
 
     def get_colors(self):
         """
-
-        @rtype: list
-        @return: list of text color as Color and background color as Color
+        @return : list of text color as str and background_color as str
         """
         return [self.__text_color, self.__background_color]
 
     def get_text(self):
         """
-
-        @rtype : str
+        @return : text of the text edit field
         """
         return self.__text
 
     def append_text(self, text):
+        """
+        add text to the end of the value of the text edit field
+        @param text: text to be appended
+        """
         self.__text += text
 
     def prepend_text(self, text):
+        """
+        add text to the beginning of the text edit field
+        @param text: text to be appended
+        """
         self.__text = text + self.__text
 
     def clear_text(self):
+        """
+        erase the value of the text edit field
+        """
         self.__text = ""
 
     def get(self):
         """
-
-
-        @return: HTML of the text view widget
-        @rtype: str
+        @return: str HTML of the text edit field
         """
         style = " "
         if self.__style_internal_enabled:
@@ -159,32 +161,15 @@ class TextView(RxGUIObject, RxDynamic):
         <p id=\"{0}\" class=\"TextView\">{1}</p>
             """ .format(self.get_name(), self.__text)
 
-    def set_size(self, width, height):
-        """
-
-        @param width: str
-        @param height: str
-        """
-        self.__width = width
-        self.__height = height
-
-        self.__css += """
-            #%s {display: block; width: %s; height: %s; }
-            """ % (self.get_name(), self.__width, self.__height)
-
     def get_width(self):
         """
-
-
-        @return: str
+        @return: str width of the text edit field
         """
         return self.__width
 
     def get_height(self):
         """
-
-
-        @return: str
+        @return: str height of the text edit field
         """
         return self.__height
 

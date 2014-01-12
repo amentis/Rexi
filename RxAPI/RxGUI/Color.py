@@ -4,13 +4,28 @@ from RxAPI.RxGUI import RxGUIObject
 
 class Color(RxGUIObject):
     """
-    A color for any RxGUIObject that requires color definition
+    color definition for wherever such is needed
     """
     def __init__(self, name, color="Black"):
         """
-        @param name: str
-        @param color: str
-        color name
+        @param name: str name of the REXI object
+        @param color: str color name. Acceptable values - HTML colors or the following predefined color names:
+        AliceBlue, AntiqueWhile, Aqua, Aquamarine, Azure, Beige, Bisque, Black, BlanchedAlmond, Blue,
+        BlueViolet, Brown, BurlyWood, Chartreuse, Chocolate, Coral, CornflowerBlue, Cornsilk, Crimson,
+        Cyan, DarkBlue, DarkCyan, DarkGoldenRod, DarkGray, DarkGreen, DarkKhaki, DarkMagenta, DarkOliveGreen,
+        DarkOrange, DarkOrchid, DarkRed, DarkSalmon, DarkSeaGreen, DarkSlateBlue, DarkSlateGray, DarkTurquoise,
+        DarkViolet, DeepPink, DeepSkyBlue, DimGray, DodgerBlue, FireBrick, FloralWhite, ForestGreen, Fuchsia,
+        Gainsboro, GhostWhite, Gold, GoldenRod, Gray, Green, GreenYellow, HoneyDew, HotPink, IndianRed, Indigo,
+        Ivory, Khaki, Lavender, LavenderBlush, LawnGreen, LemonChiffon, LightBlue, LightCoral, LightCyan,
+        LightGoldenRodYellow, LightGray, LightGreen, LightPink, LightSalmon, LightSeaGreen, LightSkyBlue,
+        LightSlateGray, LightSteelBlue, LightYellow, Lime, LimeGreen, Linen, Magenta, Maroon, MediumAquaMarine,
+        MediumBlue, MediumOrchid, MediumPurple, MediumSeaGreen, MediumSlateBlue, MediumSpringGreen,
+        MediumTurquoise, MediumVioletRed, MidnightBlue, MintCream, MistyRose, Moccasin, NavajoWhite, Navy,
+        OldLace, Olive, OliveDrab, Orange, OrangeRed, Orchid, PaleGoldenRod, PaleGreen, PaleTurquoise,
+        PaleVioletRed, PapayaWhip, PeachPuff, Peru, Pink, Plum, PowderBlue, Purple, Red, RosyBrown, RoyalBlue,
+        SaddleBrown, Salmon, SandyBrown, SeaGreen, SeaShell, Sienna, Silver, SkyBlue, SlateBlue, SlateGray,
+        Snow, SpringGreen, SteelBlue, Tan, Teal, Thistle, Tomato, Turquoise, Violet, Wheat, White, WhiteSmoke,
+        Yellow, YellowGreen
         """
         RxGUIObject.__init__(self, name, None)
         self.__color_names = dict()
@@ -160,8 +175,8 @@ class Color(RxGUIObject):
 
     def color_by_name(self, name):
         """
-        Sets the Color color to an HTML color by using an HTML name
-        @param name: str
+        sets the Color color to an HTML color by using an HTML name
+        @param name: str color name. Acceptable values: HTML colors of the following color names:
             Values: AliceBlue, AntiqueWhite, Aqua, Aquamarine, Azure, Beige, Bisque, Black,
             BlanchedAlmond, Blue, BlueViolet, Brown, BurlyWood, CadetBlue, Chartreuse, Chocolate,
             Coral, CornflowerBlue, Cornsilk, Crimson, Cyan, DarkBlue, DarkCyan, DarkGoldenRod,
@@ -181,39 +196,30 @@ class Color(RxGUIObject):
             SeaGreen, SeaShell, Sienna, Silver, SkyBlue, SlateBlue, SlateGray, Snow, SpringGreen,
             SteelBlue, Tan, Teal, Thistle, Tomato, Turquoise, Violet, Wheat, White, WhiteSmoke,
             Yellow, YellowGreen
-
         """
         self._result = self.__color_names[name]
 
     def color_by_rgb(self, r, g, b):
         """
-        Sets the Color color by provided Red Green and Blue values
-        @param r: int
-        Red
-        @param g: int
-        Green
-        @param b: int
-        Blue
+        sets the Color color by provided Red Green and Blue values
+        @param r: int Red
+        @param g: int Green
+        @param b: int Blue
         """
         self._result = "rgb({0:d}, {1:d}, {2:d}".format(r, g, b)
 
     def color_by_rgba(self, r, g, b, a):
         """
-        Sets the Color color by provided Red Green Blue and Alpha values
-        @param r: int
-        Red
-        @param g: int
-        Green
-        @param b: int
-        Blue
-        @param a: float
-        alpha
+        sets the Color color by provided Red Green Blue and Alpha values
+        @param r: int Red
+        @param g: int Green
+        @param b: int Blue
+        @param a: float alpha
         """
         self._result = "rgba({0:d}, {1:d}, {2:d}, {3:1.1f})".format(r, g, b, a)
 
     def get(self):
         """
-        @rtype: str
-        @return: portion of CSS defining the color
+        @return: str CSS code defining the color
         """
         return self._result

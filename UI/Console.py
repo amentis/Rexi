@@ -3,6 +3,9 @@ from RxAPI.RxGUI import *
 
 
 class Console(Screen):
+    """
+    A simple full-screen command-line user interface
+    """
 
     def __init__(self):
         Screen.__init__(self, "REXI Console")

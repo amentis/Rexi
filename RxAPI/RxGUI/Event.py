@@ -4,12 +4,16 @@ from RxAPI import RxObject
 
 
 class Event(RxDynamic, RxGUIObject):
-    def __init__(self, parent, sender, modifiers, functions, event_type):
+    """
+    Superclass for different dynamic events
+    """
+
+    def __init__(self, parent, sender, modifiers, actions, event_type):
         """
-        @param parent: RxGUIObject
-        @param modifiers: list
-        @param functions: list
-        @param event_type: str
+        @param parent: RxGUIObject parent object
+        @param modifiers: list list of str, keyboard modifiers (alt, shift and/or ctrl)
+        @param actions: list list of str, methods to be called on this event
+        @param event_type: str type of event (types defined in children)
         """
         RxGUIObject.__init__(self, "__event__", parent)
         RxDynamic.__init__(RxObject(self))
@@ -26,58 +30,66 @@ class Event(RxDynamic, RxGUIObject):
             self._ctrl = True
         else:
             self._ctrl = False
-        self._functions = functions
+        self._actions = actions
         self._sender = sender
         self._type = event_type
 
     def set_sender(self, sender):
         """
-        @param sender: str
+        set the sender of the event
+        @param sender: str name of the object sending the event
         """
         self._sender = sender
 
     def get_sender(self):
         """
-        @rtype : str
+        @return : str name of the object sending the event
         """
         return self._sender
 
-    def add_function(self, function):
+    def add_action(self, function):
         """
-        @param function: str
+        append action to the list of actions to be done on this event
+        @param function: str action - method to be called on this event
         """
-        self._functions.append(function)
+        self._actions.append(function)
 
-    def get_function(self, number):
+    def get_action(self, number):
         """
-        @rtype : int
+        @param number: int index of the action
+        @return : str action in the specified index of the list of actions
         """
-        return self._functions[number]
+        return self._actions[number]
 
-    def get_all_functions(self):
+    def get_all_actions(self):
         """
-        @rtype : list
+        @return : list list of str, all off the actions in the event object
         """
-        return self._functions
+        return self._actions
 
-    def remove_function(self, number):
+    def remove_action(self, number):
         """
-        @param number: int
+        remove the action on this index of the list of actions
+        @param number: int index of the action to be removed
         """
-        self._functions.pop(number)
+        self._actions.pop(number)
 
-    def remove_all_functions(self):
-        self._functions.clear()
+    def remove_all_actions(self):
+        """
+        empty the list of actions
+        """
+        self._actions.clear()
 
     def get_modifiers(self):
         """
-        @rtype : str
+        @return : str string showing which modifier keys are being used for this event
         """
         return u"ctrl: {0:s}, alt: {1:s}, shift: {2:s}".format(self._ctrl, self._alt, self._shift)
 
     def set_modifiers(self, modifiers):
         """
-        @param modifiers: str
+        set modifier keys usage in calling this event
+        @param modifiers: str string of the modifier keys to be used, separated by spaces
         """
         if "alt" in modifiers:
             self._alt = True

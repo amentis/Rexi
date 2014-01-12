@@ -7,8 +7,6 @@ sys.path.append("/home/amentis/Dropbox/Rexi")
 #from UI import Console
 from UI import Login
 
-sys.dont_write_bytecode = True
-
 
 #noinspection PyUnusedLocal
 def application(environ, start_response):
