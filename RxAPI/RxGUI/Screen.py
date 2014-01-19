@@ -15,7 +15,7 @@ class Screen(RxGUIObject, RxDynamic):
         RxGUIObject.__init__(self, "screen", None)
         RxDynamic.__init__(self)
         self.__css = ""
-        self.__title = title
+        self.title = title
         self.__body = body
 
     def get(self):
@@ -36,20 +36,20 @@ class Screen(RxGUIObject, RxDynamic):
         </head>
         <body> %s </body>
         </html>
-        """ % (self.__title, self._javascript, self.__css, self.__body)
+        """ % (self.title, self._javascript, self.__css, self.__body)
 
     def get_title(self):
         """
         @return : str page title
         """
-        return self.__title
+        return self.title
 
     def set_title(self, title):
         """
         set the title of the Screen object - page
         @param title: str page title
         """
-        self.__title = title
+        self.title = title
 
     def get_css(self):
         """

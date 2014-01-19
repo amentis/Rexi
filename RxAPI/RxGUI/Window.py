@@ -1,8 +1,8 @@
 __author__ = 'amentis'
-from RxAPI.RxGUI import RxGUIObject, RxDynamic
+from RxAPI.RxGUI import StylableObject, RxDynamic
 
 
-class Window(RxGUIObject, RxDynamic):
+class Window(StylableObject, RxDynamic):
     """
     an element holder to organize elements
     """
@@ -11,13 +11,11 @@ class Window(RxGUIObject, RxDynamic):
         @param parent: RxGUIObject parent object
         @param name: str name of the REXI object
         """
-        RxGUIObject.__init__(self, name, parent)
+        StylableObject.__init__(self, name, parent)
         RxDynamic.__init__(self)
         self.__body = ""
         self.__css = ""
         self._parent.add_child(self)
-        self.__height = '100%'
-        self.__width = '100%'
 
     def get(self):
         """
@@ -51,31 +49,6 @@ class Window(RxGUIObject, RxDynamic):
         @param css: str CSS code to be appended
         """
         self.__css += css
-
-    def set_size(self, width, height):
-        """
-        set the size for the Window object
-        @param width: str
-        @param height: str
-        """
-        self.__width = width
-        self.__height = height
-
-        self.__css += """
-            #%s {display: block; width: %s; height: %s; }
-            """ % (self.get_name(), self.__width, self.__height)
-
-    def get_width(self):
-        """
-        @return: str width of the text edit field
-        """
-        return self.__width
-
-    def get_height(self):
-        """
-        @return: str height of the text edit field
-        """
-        return self.__height
 
     def center(self):
         """

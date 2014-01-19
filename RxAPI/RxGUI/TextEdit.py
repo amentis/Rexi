@@ -1,8 +1,8 @@
 __author__ = 'amentis'
-from RxAPI.RxGUI import Font, Color, Border, RxGUIObject, RxDynamic
+from RxAPI.RxGUI import StylableObject, RxDynamic, TextContainer
 
 
-class TextEdit(RxGUIObject, RxDynamic):
+class TextEdit(StylableObject, RxDynamic, TextContainer):
     """A GUI field for working with user-inputted multi-line text"""
 
     def __init__(self, parent, name, text=" "):
@@ -11,137 +11,11 @@ class TextEdit(RxGUIObject, RxDynamic):
         @param name: str name of the REXI object
         @param text: str value of the text input field
         """
-        RxGUIObject.__init__(self, name, parent)
+        StylableObject.__init__(self, name, parent)
         RxDynamic.__init__(self)
-        self._height = ''
-        self._width = ''
-        self._style_internal_enabled = False
-        self._style_internal = ""
-        self._css = ""
-        self._font = Font.Font(self, "font")
-        self._text_color = Color.Color("textColor")
-        self._background_color = Color.Color("backgroundColor", "White")
-        self._text = text
-        self._border = Border.Border(self, "border")
+        TextContainer.__init__(self, text)
         self._parent.add_child(self)
         self._parent.append_javascript("var %s = new TextEdit(\"%s\"); \n" % (self.get_name(), self.get_name()))
-
-    def set_size(self, width, height):
-        """
-        set the size for the TextEdit object
-        @param width: str
-        @param height: str
-        """
-        self._height = height
-        self._width = width
-
-    def enable_internal_style(self, style):
-        """
-        enable an internal user-inputted CSS style to the TextEdit object by providing proper CSS
-        @param style: str css to be set as internal style
-        """
-        self._style_internal_enabled = True
-        self._style_internal = style
-
-    def disable_internal_style(self):
-        """
-        disable user-inputted CSS style
-        """
-        self._style_internal_enabled = False
-
-    def set_font(self, font):
-        """
-        set the font for the text in the TextEdit object
-        @param font: Font
-        """
-        self._font = font
-
-    def set_text_color(self, color):
-        """
-        set the color for the text in the TextEdit object
-        @param color: Color
-        """
-        self._text_color = color
-
-    def set_background_color(self, color):
-        """
-        set the background color for the TextEdit object
-        @param color: Color
-        """
-        self._background_color = color
-
-    def set_border(self, border):
-        """
-        set a border for the TextEdit object
-        @param border: Color
-        """
-        self._border = border
-
-    def get_border(self):
-        """
-        @return: Border border of the text edit widget
-        """
-        return self._border
-
-    def set_text(self, text):
-        """
-        set a value for the TextEdit object
-        @param text: str value of the text field
-        """
-        self._text = text
-
-    def get_size(self):
-        """
-        get the size of the TextEdit object
-        @return list list of width as str and height as str
-        """
-        return [self._width, self._height]
-
-    def get_style_internal_status(self):
-        """
-        get a list of a bool and a str, the bool defines whether internal style is enabled and the str is
-        the internal style
-        @return : list list of style_internal_enabled as boolean and style_internal as str
-        """
-        return [self._style_internal_enabled, self._style_internal]
-
-    def get_font(self):
-        """
-        @return: Font font of the text in the TextEdit object
-        """
-        return self._font
-
-    def get_colors(self):
-        """
-        @return : list of text color as str and background_color as str
-        """
-        return [self._text_color, self._background_color]
-
-    def get_text(self):
-        """
-        @return : text of the text edit field
-        """
-        return self._text
-
-    def append_text(self, text):
-        """
-        add text to the end of the value of the text edit field
-        @param text: text to be appended
-        """
-        self._text += text
-
-    def prepend_text(self, text):
-        """
-        add text to the beginning of the text edit field
-        @param text: text to be appended
-        """
-        self._text = text + self._text
-
-    def clear_text(self):
-        """
-        erase the value of the text edit field
-        """
-        self._text = ""
 
     def get(self):
         """
@@ -164,17 +38,6 @@ class TextEdit(RxGUIObject, RxDynamic):
         <textarea id="{0}" class="TextEdit">{1}</textarea>
             """.format(self.get_name(), self._text)
 
-    def get_width(self):
-        """
-        @return: str width of the text edit field
-        """
-        return self._width
-
-    def get_height(self):
-        """
-        @return: str height of the text edit field
-        """
-        return self._height
 
 javascript_class="""
 function TextEdit (name) {

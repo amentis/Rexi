@@ -1,12 +1,15 @@
 __author__ = 'amentis'
-__all__ = ['RxGUIObject', 'RxDynamic', 'Window', 'Screen', 'TextView', 'TextEdit', 'Font', 'Color', 'Button',
-           'Event', 'KeyEvent', 'MouseEvent', 'Border', 'Label', 'LineEdit', 'PasswordEdit']
+__all__ = ['RxGUIObject', 'RxDynamic', 'StylableObject', 'Window', 'Screen', 'TextView', 'TextEdit', 'Font',
+           'Color', 'Button', 'Event', 'KeyEvent', 'MouseEvent', 'Border', 'Label', 'LineEdit', 'PasswordEdit',
+           'TextContainer']
 """
 Libraries for writing Graphical User Interface
 @todo Button
 """
 from RxAPI.RxGUI.RxGUIObject import RxGUIObject
 from RxAPI.RxGUI.RxDynamic import RxDynamic
+from RxAPI.RxGUI.StylableObject import StylableObject
+from RxAPI.RxGUI.TextContainer import TextContainer
 from RxAPI.RxGUI.Window import Window
 from RxAPI.RxGUI.Screen import Screen
 from RxAPI.RxGUI.TextView import TextView

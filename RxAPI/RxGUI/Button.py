@@ -1,10 +1,10 @@
 __author__ = 'amentis'
-from RxAPI.RxGUI import RxGUIObject, RxDynamic
+from RxAPI.RxGUI import StylableObject, RxDynamic
 from RxAPI import RxObject
 
 
-class Button(RxGUIObject, RxDynamic):
+class Button(StylableObject, RxDynamic):
     def __init__(self, parent, name):
-        RxGUIObject.__init__(self, name, parent)
+        StylableObject.__init__(self, name, parent)
         RxDynamic.__init__(RxObject(self))
         pass
