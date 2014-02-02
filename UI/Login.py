@@ -19,6 +19,7 @@ class Login(Screen):
         self.username_field = LineEdit(self.login_form, "username", "username")
         self.password_label = Label(self.login_form, "Password: ")
         self.password_field = PasswordEdit(self.login_form, "password", "password")
+        self.submit_button = Button(self.login_form, "LogIn", "Log In")
         self.set_background_color(Color("screenBackgroundColor", "Lavender"))
         self.window.center()
         self.subtitle.set_size('100%', '200px')
