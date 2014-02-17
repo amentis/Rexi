@@ -20,6 +20,7 @@ def starter(environ, start_response):
     session = environ['beaker.session']
 
     if 'logged_in' in session:  # check in database if last attempt is a login and successful
+
         ui = Console.Console()
     else:
         ui = Login.Login()
